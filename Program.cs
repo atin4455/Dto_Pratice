@@ -1,4 +1,5 @@
 using Dto_Pratice.Data;
+using Dto_Pratice.Models;
 using Dto_Pratice.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,16 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();
+
+    if (!db.Users.Any()) 
+    {
+        db.Users.Add(new UserEntity
+        {
+            Name = "測試使用者",
+            Email = "seed@example.com"
+        });
+        db.SaveChanges();
+    }
 }
 
 // Configure the HTTP request pipeline.
