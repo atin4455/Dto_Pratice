@@ -1,7 +1,10 @@
+using Dto_Pratice.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUserDemoService, UserDemoService>();
 
 var app = builder.Build();
 
