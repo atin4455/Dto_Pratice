@@ -5,11 +5,21 @@ using System.Diagnostics;
 
 namespace Dto_Pratice.Controllers
 {
-    public class HomeController(IUserDemoService userDemoService) : Controller
+    public class HomeController : Controller
     {
+        private readonly IUserDemoService _userDemoService;
+
+        // 建構子名稱必須與類別名稱 HomeController 一致
+        public HomeController(IUserDemoService userDemoService)
+        {
+            _userDemoService = userDemoService;
+        }
+
         public IActionResult DtoDemo()
         {
-            return View(userDemoService.GetDtoDemoPage());
+            // 使用注入的 Service 取得資料
+            var model = _userDemoService.GetDtoDemoPage();
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
