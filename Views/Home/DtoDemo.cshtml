@@ -1,0 +1,15 @@
+@model UserDemoViewModel
+@{
+    ViewData["Title"] = "DTO 與 ViewModel";
+}
+
+<div class="text-center">
+    <h1 class="display-6">DTO 與 ViewModel</h1>
+    <p class="lead">@Model.Greeting</p>
+    <p class="text-muted small">上面是 ViewModel 的欄位；下面是包在裡面的 <code>UserDto</code>（純資料）。</p>
+    <ul class="list-unstyled">
+        <li>Id：@Model.User.Id</li>
+        <li>Name：@Model.User.Name</li>
+        <li>Email：@Model.User.Email</li>
+    </ul>
+</div>
